@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         MainController.setURL();
         MainActivity.myActiveActivity = this;
         MainController.setActivity(this);
+        ImageView iv_portada = findViewById(R.id.imageView2);
+        iv_portada.setImageResource(R.drawable.banner);
         List<Localidades> csvData = CSVReader.readCSV(this, R.raw.codmun);
         List<String> elementosSpinner = new ArrayList<>();
         EditText busqueda =findViewById(R.id.editTextNombre);

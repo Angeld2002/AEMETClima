@@ -43,7 +43,7 @@ public class Clima {
 
     public String getNombreDia() {
         if (!dia.isEmpty()) {
-           String diayNombre = dia + "\n" + " (" +nombreDia+") ";
+           String diayNombre = dia + "\n" + "(" +nombreDia+")";
            return diayNombre;
         } else {
         return nombreDia;

@@ -33,10 +33,21 @@ public class JornadaViewHolder extends RecyclerView.ViewHolder {
 
     public void setEstadoCielo(String data) {
 
-        if ("Despejado".equalsIgnoreCase(data))
-        {
+        if ("Despejado".equalsIgnoreCase(data)) {
             ivEstadoCielo.setImageResource(R.drawable.ic_despejado);
-        } else ivEstadoCielo.setImageResource(R.drawable.ic_nuboso);
+        } else if ("Poco nuboso".equalsIgnoreCase(data) || "Intervalos nubosos".equalsIgnoreCase(data) ) {
+            ivEstadoCielo.setImageResource(R.drawable.ic_poco_nuboso);
+        } else if ("Nuboso".equalsIgnoreCase(data) || "Muy nuboso".equalsIgnoreCase(data) || "Cubierto".equalsIgnoreCase(data) ) {
+            ivEstadoCielo.setImageResource(R.drawable.ic_nuboso);
+        } else if ("Cubierto con lluvia".equalsIgnoreCase(data) ||"Cubierto con lluvia".equalsIgnoreCase(data) || "Cubierto con lluvia escasa".equalsIgnoreCase(data) ) {
+            ivEstadoCielo.setImageResource(R.drawable.ic_lluvioso);
+        } else if ("Poco nuboso".equalsIgnoreCase(data)) {
+            ivEstadoCielo.setImageResource(R.drawable.ic_nuboso);
+        } else if ("Poco nuboso".equalsIgnoreCase(data)) {
+            ivEstadoCielo.setImageResource(R.drawable.ic_nuboso);
+        } else {
+            ivEstadoCielo.setImageResource(R.drawable.ic_despejado);
+        }
     }
     public void setDia(String data) {
         tvDia.setText(data);

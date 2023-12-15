@@ -13,8 +13,10 @@
         android:layout_weight="0.5" />
     <TextView
         android:id="@+id/tvDia"
-
-        style="@style/day_title"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:text="TextView"
         android:layout_weight="0.8"/>
     <TextView
