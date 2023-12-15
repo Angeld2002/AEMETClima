@@ -12,7 +12,7 @@ public class MainController {
     private static String DATA_URL;
     private static String DATA_CODMUN;
     private static MainController mySingleController;
-
+    private static Respuesta answer;
     private List<Clima> dataRequested;
     private static MainActivity activeActivity;
     //Comportamiento
@@ -52,12 +52,17 @@ public class MainController {
     //Called when onResponse is OK
     public void setDataFromAemet(String json) {
 
-        Respuesta answer = new Respuesta(json);
-        dataRequested = answer.getDias();
+        answer = new Respuesta(json);
+        answer.getDias();
         //Load data on the list
         MainController.activeActivity.accessData();
     }
-
+    public void setDataFromAemet2(String json) {
+        answer.setDatosClima(json);
+        answer.getClima();
+        //Load data on the list
+        MainController.activeActivity.accessData();
+    }
     public void setErrorFromAemet(String error) {
 
         //Load data on the list

@@ -6,18 +6,25 @@
     android:padding="6dp"
     >
 
+    <ImageView
+        android:id="@+id/ivEstadoCielo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
     <TextView
-        android:id="@+id/Equipo1"
+        android:id="@+id/tvDia"
 
         style="@style/day_title"
-        android:text="TextView" />
-    <TextView
-        android:id="@+id/Equipo2"
         android:text="TextView"
-        style="@style/day_title" />
+        android:layout_weight="1"/>
+    <TextView
+        android:id="@+id/tvTemp"
+        android:text="TextView"
+        style="@style/day_title"
+        android:layout_weight="1"/>
 
     <TextView
-        android:id="@+id/Resultado"
+        android:id="@+id/tvHumedad"
         style="@style/day_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

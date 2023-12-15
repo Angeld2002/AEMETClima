@@ -6,30 +6,37 @@ public class Clima {
     //y se muestra como texto, al fin y al cabo
 
     //POJO CLASS
-    private String Equipo1;
-    private String Equipo2;
-    private String Resultado;
+    private String estadoCielo;
+    private String dia;
+    private String nombreDia;
+    private String tempMax;
+    private String tempMin;
+    private String humedadMax;
+    private String humedadMin;
     //Comportamiento
     //Construtor
 
-    public Clima(String Equipo1, String Equipo2, String Resultado) {
-        this.Equipo1 = Equipo1;
-        this.Equipo2 = Equipo2;
-        this.Resultado = Resultado;
+    public Clima(String estadoCielo,String nombreDia, String tempMax, String tempMin, String humedadMax, String humedadMin) {
+        this.estadoCielo = estadoCielo;
+        this.nombreDia = nombreDia;
+        this.tempMax = tempMax;
+        this.tempMin = tempMin;
+        this.humedadMax = humedadMax;
+        this.humedadMin = humedadMin;
+    }
+    public Clima(String estadoCielo,String dia, String nombreDia, String tempMax, String tempMin, String humedadMax, String humedadMin) {
+        this.estadoCielo = estadoCielo;
+        this.dia = dia;
+        this.nombreDia = nombreDia;
+        this.tempMax = tempMax;
+        this.tempMin = tempMin;
+        this.humedadMax = humedadMax;
+        this.humedadMin = humedadMin;
     }
 
 
     //Getters
 
 
-    public String getEquipo1() {
-        return Equipo1;
-    }
-    public String getEquipo2() {
-        return Equipo2;
-    }
 
-    public String getResultado() {
-        return Resultado;
-    }
 }

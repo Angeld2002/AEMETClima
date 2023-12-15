@@ -37,9 +37,9 @@ public class JornadaAdapter extends RecyclerView.Adapter<JornadaViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull JornadaViewHolder holder, int position) {
         //TODO: fill data
-       holder.setEquipo1(this.mList.get(position).getEquipo1());
-       holder.setEquipo2(this.mList.get(position).getEquipo2());
-       holder.setResultado(this.mList.get(position).getResultado());
+       //holder.setEquipo1(this.mList.get(position).getEquipo1());
+       //holder.setEquipo2(this.mList.get(position).getEquipo2());
+       //holder.setResultado(this.mList.get(position).getResultado());
     }
 
 

@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private LinkedList<Clima> mList = new LinkedList<>();
     private RecyclerView mRecyclerView;
     private JornadaAdapter mAdapter;
-    private HashMap<String,String> mapaLocalidad;
+    private HashMap<String,String> mapaLocalidad = new HashMap<>();
     private static MainActivity myActiveActivity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
         Spinner spinnerLocalidad =findViewById(R.id.spLocalidad);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, elementosSpinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLocalidad.setAdapter(adapter);
 
-        mapaLocalidad = new MapaLocalidad(csvData).getMapa();
+        mapaLocalidad = new MapaLocalidad().getMapa(csvData);
 
         busqueda.addTextChangedListener(new TextWatcher() {
             @Override
@@ -64,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if (charSequence.length() >= 3) {
+                    elementosSpinner.clear();
+                    elementosSpinner.add("Desplegar");
                     for (Map.Entry<String, String> map: mapaLocalidad.entrySet()
                          ) {
                         String nombre = map.getKey();
@@ -85,10 +86,11 @@ public class MainActivity extends AppCompatActivity {
         spinnerLocalidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-
-                String selectedElement = elementosSpinner.get(position);
-                MainController.setCodigo(mapaLocalidad.get(selectedElement));
-                MainController.getSingleton().requestDataFromAemet();
+                if (position > 0 && position < elementosSpinner.size()) {
+                    String selectedElement = elementosSpinner.get(position);
+                    MainController.setCodigo(mapaLocalidad.get(selectedElement));
+                    MainController.getSingleton().requestDataFromAemet();
+                }
             }
 
             @Override

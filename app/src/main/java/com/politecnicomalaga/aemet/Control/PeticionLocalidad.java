@@ -31,7 +31,7 @@ public class PeticionLocalidad {
 
 
         Request peticion = new Request.Builder()
-                .url(URL )
+                .url(URL)
                 .get()
                 .addHeader("cache-control", "no-cache")
                 .build();
@@ -51,7 +51,7 @@ public class PeticionLocalidad {
                      @Override
                      public void run() {
                          // Code will be executed on the main thread
-                         MainController.getSingleton().setDataFromAemet(respuesta);
+                         MainController.getSingleton().setDataFromAemet2(respuesta);
                      }
                  });
              }

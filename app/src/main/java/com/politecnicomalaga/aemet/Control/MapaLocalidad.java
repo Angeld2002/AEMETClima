@@ -7,14 +7,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MapaLocalidad {
-    List<Localidades> listaLocalidad;
+    HashMap<String, String> mapaLocalidad;
 
-    public MapaLocalidad(List<Localidades> listaLocalidad) {
-        this.listaLocalidad = listaLocalidad;
+    public MapaLocalidad() {
+        mapaLocalidad = new HashMap<>();
     }
 
-    public HashMap<String, String> getMapa() {
-        HashMap<String, String> mapaLocalidad = new HashMap<>();
+    public HashMap<String, String> getMapa(List<Localidades> listaLocalidad) {
+        mapaLocalidad = new HashMap<>();
         for (Localidades local : listaLocalidad) {
             mapaLocalidad.put(local.getNombre().toUpperCase(), local.getNumero().toString());
         }

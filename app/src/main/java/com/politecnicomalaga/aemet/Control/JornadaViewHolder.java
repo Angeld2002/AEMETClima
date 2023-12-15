@@ -1,6 +1,7 @@
 package com.politecnicomalaga.aemet.Control;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,29 +15,33 @@ public class JornadaViewHolder extends RecyclerView.ViewHolder {
 
     //TODO: declare attributes to hold two textviews, day and money
     final JornadaAdapter mAdapter;
-    private TextView tvEquipo1;
-    private TextView tvEquipo2;
-    private TextView tvResultado;
+    private ImageView ivEstadoCielo;
+    private TextView tvDia;
+    private TextView tvTemp;
+    private TextView tvHumedad;
 
 
     //COMPORTAMIENTO
     public JornadaViewHolder(View itemView, JornadaAdapter adapter) {
         super(itemView);
-
-        tvEquipo1 = itemView.findViewById(R.id.Equipo1);
-        tvEquipo2 = itemView.findViewById(R.id.Equipo2);
-        tvResultado = itemView.findViewById(R.id.Resultado);
+        ivEstadoCielo = itemView.findViewById(R.id.ivEstadoCielo);
+        tvDia = itemView.findViewById(R.id.tvDia);
+        tvTemp = itemView.findViewById(R.id.tvTemp);
+        tvHumedad = itemView.findViewById(R.id.tvHumedad);
         this.mAdapter = adapter;
     }
 
-    public void setEquipo1(String data) {
-        tvEquipo1.setText(data);
-    }
+    public void setEstadoCielo(String data) {
 
-    public void setEquipo2(String data) {
-        tvEquipo2.setText(data);
+        ivEstadoCielo.set(data);
     }
-    public void setResultado(String data) {
-        tvResultado.setText(data);
+    public void setDia(String data) {
+        tvDia.setText(data);
+    }
+    public void setTemp(String data) {
+        tvTemp.setText(data);
+    }
+    public void setHumedad(String data) {
+        tvHumedad.setText(data);
     }
 }

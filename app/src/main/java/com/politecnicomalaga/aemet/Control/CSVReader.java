@@ -22,7 +22,7 @@ public class CSVReader {
 
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] Parte = line.split(",");
+                String[] Parte = line.split(";");
                 Localidades NuevaLocalidad = new Localidades(Parte[0]+Parte[1],Parte[2]);
                 listaLocalidad.add(NuevaLocalidad);
             }
