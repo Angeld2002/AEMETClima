@@ -2,6 +2,7 @@ package com.politecnicomalaga.aemet.Control;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -65,8 +66,9 @@ public class PeticionLocalidad {
                      @Override
                      public void run() {
                          // Code will be executed on the main thread
-                         MainController.getSingleton().setDataFromAemet("");
+                         MainController.getSingleton().setDataFromAemet2("");
                          MainController.getSingleton().setErrorFromAemet(respuesta);
+                         Log.d("Error OnFailure Peticion Localidad", respuesta);
                      }
                  });
              }

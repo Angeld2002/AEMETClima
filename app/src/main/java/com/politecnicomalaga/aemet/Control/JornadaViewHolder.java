@@ -33,7 +33,10 @@ public class JornadaViewHolder extends RecyclerView.ViewHolder {
 
     public void setEstadoCielo(String data) {
 
-        ivEstadoCielo.set(data);
+        if ("Despejado".equalsIgnoreCase(data))
+        {
+            ivEstadoCielo.setImageResource(R.drawable.ic_despejado);
+        } else ivEstadoCielo.setImageResource(R.drawable.ic_nuboso);
     }
     public void setDia(String data) {
         tvDia.setText(data);

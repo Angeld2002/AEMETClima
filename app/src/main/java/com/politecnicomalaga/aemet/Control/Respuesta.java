@@ -8,7 +8,11 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.politecnicomalaga.aemet.Model.Clima;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
+import java.util.Locale;
 
 
 public class Respuesta {
@@ -27,24 +31,10 @@ public class Respuesta {
     public Respuesta(String entrada) {
         datos = entrada;
     }
-    public void getlink() {
-
-        LinkedList<Clima> dataList = new LinkedList<>();
-
-        JsonElement jsonElement = JsonParser.parseString(this.datos);
-        JsonObject jso;
-        JsonArray jsonLista;
-
-         NEW_URL = jsonElement.getAsJsonObject().get("datos").getAsString();
-        PeticionLocalidad ptl =new PeticionLocalidad();
-        ptl.requestData(NEW_URL);
-
-
-        }
 
     public void getDias() {
 
-        LinkedList<Clima> dataList = new LinkedList<>();
+
 
         Log.d("Respuesta",this.datos);
         JsonObject jso = JsonParser.parseString(this.datos).getAsJsonObject();
@@ -53,17 +43,47 @@ public class Respuesta {
         PeticionLocalidad ptl =new PeticionLocalidad();
         ptl.requestData(NEW_URL);
     }
-    public void getClima() {
+    public LinkedList<Clima> getClima() {
+
+        LinkedList<Clima> dataList = new LinkedList<>();
+
         JsonArray jsa = JsonParser.parseString(this.datosClima).getAsJsonArray();
         Log.d("Respuesta",this.datosClima);
         JsonObject jsonCompleto = jsa.get(0).getAsJsonObject();
         JsonObject jsonPre = jsonCompleto.getAsJsonObject("prediccion");
         JsonArray jsaDia = jsonPre.getAsJsonArray("dia");
-        for (int i = 0; i < jsonCompleto.size(); i++) {
-            //dataList.add(new Clima(jsonLista.get(i).getAsJsonArray().get(0).getAsJsonPrimitive().getAsString(), jsonLista.get(i).getAsJsonArray().get(1).getAsJsonPrimitive().getAsString()));
+        for (int i = 0; i < jsaDia.size(); i++) {
+            JsonObject diaElement = jsaDia.get(i).getAsJsonObject();
 
+            String fecha = diaElement.get("fecha").getAsString();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault());
+            LocalDateTime fechaLocalDateTime = LocalDateTime.parse(fecha, formatter);
+            DateTimeFormatter formatterDiaSemana = DateTimeFormatter.ofPattern("EEEE", new Locale("es", "ES"));
+            String diaSemana = fechaLocalDateTime.format(formatterDiaSemana);
+
+            JsonArray jsaEstadoCielo = diaElement.getAsJsonArray("estadoCielo");
+            JsonObject estadoCieloElement = jsaEstadoCielo.get(0).getAsJsonObject();
+            String estadoCielo = estadoCieloElement.get("descripcion").getAsString();
+            Log.d("Respuesta Estados", estadoCielo);
+
+            JsonObject tempElement = diaElement.getAsJsonObject("temperatura");
+            String tempMax = tempElement.get("maxima").getAsString();
+            String tempMin = tempElement.get("minima").getAsString();
+
+            JsonObject humElement = diaElement.getAsJsonObject("humedadRelativa");
+            String humMax = tempElement.get("maxima").getAsString();
+            String humMin = tempElement.get("minima").getAsString();
+            if (i == 0) {
+                dataList.add(new Clima(estadoCielo,"Hoy",diaSemana,tempMax, tempMin,humMax,humMin));
+            } else if (i == 1) {
+                dataList.add(new Clima(estadoCielo,"Mañana",diaSemana,tempMax, tempMin,humMax,humMin));
+            } else {
+                dataList.add(new Clima(estadoCielo,diaSemana,tempMax, tempMin,humMax,humMin));
+            }
         }
+        return dataList;
     }
 }
+
 
 

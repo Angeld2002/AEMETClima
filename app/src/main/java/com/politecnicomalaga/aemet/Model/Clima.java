@@ -18,6 +18,7 @@ public class Clima {
 
     public Clima(String estadoCielo,String nombreDia, String tempMax, String tempMin, String humedadMax, String humedadMin) {
         this.estadoCielo = estadoCielo;
+        this.dia = "";
         this.nombreDia = nombreDia;
         this.tempMax = tempMax;
         this.tempMin = tempMin;
@@ -34,9 +35,26 @@ public class Clima {
         this.humedadMin = humedadMin;
     }
 
+//Getters
 
-    //Getters
+    public String getEstadoCielo() {
+        return estadoCielo;
+    }
 
-
-
+    public String getNombreDia() {
+        if (!dia.isEmpty()) {
+           String diayNombre = dia + "\n" + " (" +nombreDia+") ";
+           return diayNombre;
+        } else {
+        return nombreDia;
+        }
+    }
+    public String getTemp() {
+        String Temperatura = "Temperatura:" + "\n" + "Max: " +tempMax+ "cº\n" + "Min: " +tempMin +"cº";
+        return Temperatura;
+    }
+    public String getHumedad() {
+        String Humedad = "Humedad:" + "\n" + "Max: " +humedadMax+ "%\n" + "Min: " +humedadMin + "%";
+        return Humedad;
+    }
 }

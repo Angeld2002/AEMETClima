@@ -59,7 +59,7 @@ public class MainController {
     }
     public void setDataFromAemet2(String json) {
         answer.setDatosClima(json);
-        answer.getClima();
+        dataRequested = answer.getClima();
         //Load data on the list
         MainController.activeActivity.accessData();
     }
