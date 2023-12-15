@@ -9,4 +9,14 @@
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="EditTextSinLinea" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/edittextsinlinea</item>
+        <item name="android:padding">8dp</item>
+    </style>
+    <style name="EstiloElementoRecyclerView">
+        <item name="android:background">@drawable/recyclerviewredondo</item>
+        <item name="android:layout_marginTop">@dimen/espaciado_recycler_view</item>
+        <item name="android:layout_marginBottom">@dimen/espaciado_recycler_view</item>
+        <item name="android:padding">16dp</item> <!-- Ajusta el espacio interno según tus necesidades -->
+    </style>
 </resources>
